@@ -1,26 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import HomePage from './components/pages/HomePage';
+import LoginPage from './components/pages/LoginPage';
+import NotFoundPage from './components/pages/NotFoundPage';
+import UsersPage from './components/pages/UsersListPage';
+import { pages } from './machines/RouteMachine';
+import Header from './components/header/Header';
+import Route from './components/Router/Route';
+import UserPage from './components/pages/UserPage';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <Route page={pages.HOME_PAGE}>
+        <HomePage />
+      </Route>
+      <Route page={pages.LOGIN_PAGE}>
+        <LoginPage />
+      </Route>
+      <Route page={pages.USERS_LIST_PAGE}>
+        <UsersPage />
+      </Route>
+      <Route page={pages.USER_PAGE}>
+        <UserPage />
+      </Route>
+      <Route page={pages.NOT_FOUND_PAGE}>
+        <NotFoundPage />
+      </Route>
     </div>
   );
-}
+};
 
 export default App;
